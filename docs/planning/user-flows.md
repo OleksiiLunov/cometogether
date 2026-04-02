@@ -254,11 +254,30 @@ The platform has a single user type (Musician), who can create and manage Bands.
 
 ## 9. Leave Band
 
-**User:** Musician  
-**Goal:** Exit band  
+User: Musician  
+Goal: Leave a band they are a member of
 
 ### Flow:
-1. ...
+
+1. User navigates to the band profile page
+2. System displays band information, member list, and available actions
+3. User clicks "Leave Band" button
+4. System checks:
+   - If user is **last admin** or **only member**, system shows modal:  
+     "You are the last admin. Leaving will delete the band. Are you sure?"  
+     - User can **confirm** → proceed to step 6  
+     - User can **cancel** → stop flow
+   - Else, system shows confirmation modal with:
+     * Warning about losing access to band content
+     * Optional feedback field for reason of leaving
+5. User confirms leaving
+6. System:
+   * Removes user from band member list
+   * If user was last admin / only member, deletes the band and removes all members
+   * Updates band dashboard
+   * Sends optional notification to band admin
+7. System shows success message: "You have left the band"
+8. User is redirected to personal dashboard or bands list
 
 ---
 
@@ -266,41 +285,148 @@ The platform has a single user type (Musician), who can create and manage Bands.
 
 ## 10. Search for Bands
 
-**User:** Musician  
-**Goal:** Find bands to join  
+User: Musician  
+Goal: Find new bands to join or explore
 
 ### Flow:
-1. ...
+
+1. User navigates to the "Bands" search page or uses search bar from dashboard
+2. System displays search interface with:
+   - Search field (keywords, genre, location)
+   - Filters (skill level, band type, online/offline, availability)
+   - Sort options (relevance, newest, popularity)
+3. User enters search query and applies filters
+4. System displays list of bands matching criteria
+5. User can:
+   - Click on a band to view profile
+   - Bookmark/save band for later
+   - Apply to join the band (if allowed)
+6. User views band profile
+7. System shows band details:
+   - Name, genre, description
+   - Member list
+   - Upcoming events or rehearsals
+   - Join/apply button (if user is not already a member)
+8. User decides to:
+   - Apply to join → system sends application/notification to band admin
+   - Go back to search results → system retains search filters and query
+   - Close search → return to dashboard
+
+### Notes:
+
+- Search results update dynamically as filters are applied
+- System may suggest bands based on user profile and past activity
+- If no results match, system shows “No bands found” with option to reset filters
 
 ---
 
 ## 11. View Band Profile
 
-**User:** Musician  
-**Goal:** Evaluate a band  
+User: Musician  
+Goal: See detailed information about a band
 
 ### Flow:
-1. ...
+
+1. User navigates to a band profile from:
+   - Search results
+   - Dashboard (saved/bookmarked bands)
+   - Notifications or invitations
+2. System displays band profile page with:
+   - Band name, genre, and description
+   - Member list with roles and instruments
+   - Upcoming events, rehearsals, or gigs
+   - Media: photos, videos, audio samples
+   - Join/Apply button (if user is not already a member)
+   - Message or contact button (if allowed)
+3. User can:
+   - View full member details
+   - Listen to or watch media
+   - Send message to band admin or members
+   - Apply to join the band (if applicable)
+   - Bookmark/save the band for later
+4. System handles interactions:
+   - Displays messaging interface or modal
+   - Sends application to band admin if user applies
+   - Confirms successful bookmark/save
+5. User decides next action:
+   - Return to search results or dashboard
+   - Continue browsing band content
+   - Exit band profile
 
 ---
 
 ## 12. Search for Musicians
 
-**User:** Musician (Band Owner / Member)  
-**Goal:** Find musicians for band  
+User: Musician  
+Goal: Find other musicians to collaborate with or join a band
 
 ### Flow:
-1. ...
 
+1. User navigates to the "Musicians" search page or uses search bar from dashboard
+2. System displays search interface with:
+   - Search field (keywords, instrument, genre, location)
+   - Filters (skill level, availability, online/offline, experience)
+   - Sort options (relevance, newest, popularity)
+3. User enters search query and applies filters
+4. System displays list of musicians matching criteria
+5. User can:
+   - Click on a musician to view their profile
+   - Send connection request or message
+   - Bookmark/save musician for later
+6. User views musician profile
+7. System shows musician details:
+   - Name, instruments, skill level
+   - Genres and styles
+   - Availability and location
+   - Bands they are part of (if public)
+   - Media: recordings, videos, or samples
+   - Message or contact button
+8. User decides to:
+   - Send a message or collaboration request → system sends notification
+   - Bookmark/save musician → system confirms save
+   - Return to search results → system retains search filters
+   - Close search → return to dashboard
+
+### Notes:
+
+- Search results update dynamically as filters are applied
+- System may suggest musicians based on user profile and past activity
+- If no results match, system shows “No musicians found” with option to reset filters
 ---
 
 ## 13. View Musician Profile
 
-**User:** Musician  
-**Goal:** Evaluate another musician  
+User: Musician  
+Goal: See detailed information about another musician
 
 ### Flow:
-1. ...
+
+1. User navigates to a musician profile from:
+   - Search results
+   - Dashboard (saved/bookmarked musicians)
+   - Notifications or invitations
+2. System displays musician profile page with:
+   - Name, instruments, and skill level
+   - Genres and styles
+   - Location and availability
+   - Bands they are part of (if public)
+   - Media: recordings, videos, or samples
+   - Message or contact button
+   - Bookmark/save button
+3. User can:
+   - View full musician details
+   - Listen to or watch media
+   - Send a message or collaboration request
+   - Apply to invite musician to a band (if user is band admin)
+   - Bookmark/save musician for later
+4. System handles interactions:
+   - Displays messaging interface or modal
+   - Sends collaboration request or invitation if applicable
+   - Confirms successful bookmark/save
+5. User decides next action:
+   - Return to search results or dashboard
+   - Continue browsing musician content
+   - Exit musician profile
 
 ---
 
@@ -308,38 +434,137 @@ The platform has a single user type (Musician), who can create and manage Bands.
 
 ## 14. Send Join Request to Band
 
-**User:** Musician  
-**Goal:** Apply to join a band  
+User: Musician  
+Goal: Request to join a band
 
 ### Flow:
-1. ...
+
+1. User navigates to a band profile from:
+   - Search results
+   - Dashboard (saved/bookmarked bands)
+   - Notifications or invitations
+2. System displays band profile with:
+   - Band name, genre, description
+   - Member list
+   - Join/Apply button
+3. User clicks “Join Band” or “Apply” button
+4. System displays join request modal:
+   - Optional message/cover note field
+   - Confirm or cancel buttons
+5. User fills optional message and confirms request
+6. System:
+   - Sends join request notification to band admin(s)
+   - Confirms to user: “Your request has been sent”
+7. User decides next action:
+   - Return to search results or dashboard
+   - View other bands
+   - Close band profile
 
 ---
 
 ## 15. Review Join Requests
 
-**User:** Musician (Band Owner / Member with permissions)  
-**Goal:** Accept or reject candidates  
+User: Band Admin  
+Goal: Review and respond to incoming join requests from musicians
 
 ### Flow:
-1. ...
 
+1. Admin navigates to the band dashboard or notifications
+2. System displays list of pending join requests with:
+   - Requesting musician name
+   - Instruments, skill level, genres
+   - Optional message/cover note
+   - Date of request
+3. Admin selects a join request to review
+4. System displays detailed request information and options:
+   - Approve / Accept
+   - Reject / Decline
+   - Message musician (optional)
+5. Admin takes action:
+   - Approve:
+     - System adds musician to band member list
+     - Sends confirmation notification to musician
+   - Reject:
+     - System sends rejection notification to musician
+   - Optional: Admin sends custom message to musician
+6. Admin decides next action:
+   - Review next pending request
+   - Return to band dashboard
+   - Exit notifications
 ---
 
 ## 16. Messaging
 
-**User:** Musician  
-**Goal:** Communicate with other users  
+User: Musician  
+Goal: Send and receive messages with other musicians or bands in a single conversation thread
 
 ### Flow:
-1. ...
+
+1. User navigates to the messaging interface from:
+   - Dashboard
+   - Notifications
+   - Musician or Band profile
+2. System displays inbox with:
+   - List of existing conversations (one per musician or band)
+   - Search and filter options
+   - New message button
+3. User selects an existing conversation or clicks “New Message”
+4. System displays a single conversation thread with the selected musician or band:
+   - Shows full message history in chronological order
+   - Text input field at the bottom
+   - Optional attachments (audio, video, images)
+   - Send button
+5. User composes and sends a message
+6. System:
+   - Delivers message to recipient
+   - Updates conversation thread in real-time
+   - Sends notification to recipient
+7. User can:
+   - Reply to messages in the same thread
+   - Attach additional media
+   - Delete messages from their view or archive conversation
+8. User decides next action:
+   - Continue messaging in the same conversation
+   - Return to inbox to select another conversation
+   - Exit messaging interface
 
 ---
 
 ## 17. Receive Notifications
 
-**User:** Musician  
-**Goal:** Stay updated on activity  
+User: Musician  
+Goal: Stay informed about important events, messages, and updates on the platform
 
 ### Flow:
-1. ...
+
+1. System detects an event related to the user, such as:
+   - New message from another musician or band
+   - Join request sent to user’s band (if user is admin)
+   - Invitation to join a band
+   - Event or rehearsal updates in a band user is a member of
+   - System announcements or updates
+2. System creates a notification with:
+   - Type (message, request, invitation, update)
+   - Brief description or title
+   - Timestamp
+   - Link to relevant page (conversation, band, dashboard)
+3. User sees notification via:
+   - Platform inbox or notification center
+   - Optional push notification (email, mobile app, browser)
+4. User clicks notification
+5. System redirects user to the relevant page:
+   - Message → opens conversation thread
+   - Join request → opens request review interface
+   - Invitation → opens band profile or join request modal
+   - Event/update → opens event details or dashboard
+6. User takes action on notification:
+   - Respond to message
+   - Accept/decline join request or invitation
+   - Review event details
+   - Dismiss notification
+7. System marks notification as read once user interacts with it or manually dismisses it
+8. User decides next action:
+   - Continue interacting with the content
+   - Return to dashboard or other platform sections
+   - Exit notifications interface
+---
