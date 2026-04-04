@@ -34,8 +34,7 @@ The platform has a single user type (Musician), who can create and manage Bands.
    - System creates a new user account
 10. (Optional, MVP decision) System sends email verification
 11. User is redirected to:
-   - Profile creation page OR
-   - Dashboard (if profile can be completed later)
+   - Profile creation page
 
 ---
 
@@ -60,8 +59,7 @@ The platform has a single user type (Musician), who can create and manage Bands.
 9. If authentication succeeds:
    - System creates user session
 10. System redirects user to:
-    - Dashboard OR
-    - Last visited page (if applicable)
+    - Dashboard
 
 ---
 
@@ -92,8 +90,7 @@ The platform has a single user type (Musician), who can create and manage Bands.
 10. If validation succeeds:
    - System saves profile data
 11. System redirects user to:
-   - Dashboard OR
-   - Discovery (e.g., "Find Bands")
+   - Dashboard
 
 ---
 
@@ -159,8 +156,7 @@ The platform has a single user type (Musician), who can create and manage Bands.
     - System creates a new band
     - System assigns user as band owner
 13. System redirects user to:
-    - Band profile page OR
-    - Band management page
+    - Band profile page
 
 ---
 
