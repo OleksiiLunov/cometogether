@@ -166,28 +166,35 @@ The platform has a single user type (Musician), who can create and manage Bands.
 **Goal:** Update and maintain band information  
 
 ### Flow:
-1. User logs into the system
-2. User navigates to "My Bands"
-3. User selects a specific band
-4. System displays band profile page
-5. User clicks "Edit Band Profile"
-6. System displays editable form with current band data
-7. User updates one or more fields:
-   - Band name
-   - Location
-   - Genre(s)
-   - Description / bio
-   - "Looking for" instruments (optional)
-8. User updates band image (optional)
-9. User submits changes
-10. System validates updated data
-11. If validation fails:
-    - System shows error messages
-    - User corrects input
-12. If validation succeeds:
-    - System saves updated band data
-13. System shows confirmation (e.g., "Band profile updated successfully")
-14. User continues managing the band
+1. User logs into the system  
+2. User navigates to "My Bands"  
+3. User selects a specific band  
+4. System displays band profile page  
+5. System checks if user has permission to edit the band  
+6. If user does NOT have permission:
+   - System hides "Edit Band Profile" button  
+   - User can only view band profile  
+7. If user has permission:
+   - System displays "Edit Band Profile" button  
+   - User clicks "Edit Band Profile"  
+   - System displays editable form with current band data  
+8. User updates one or more fields:
+   - Band name  
+   - Location  
+   - Genre(s)  
+   - Description / bio  
+   - "Looking for" instruments (optional)  
+9. User updates band image (optional)  
+10. User submits changes  
+11. System validates updated data  
+12. If validation fails:
+    - System shows error messages  
+    - User corrects input  
+13. If validation succeeds:
+    - System saves updated band data  
+14. System shows confirmation (e.g., "Band profile updated successfully")
+
+15. User continues managing the band  
 
 ---
 
@@ -197,25 +204,32 @@ The platform has a single user type (Musician), who can create and manage Bands.
 **Goal:** Invite other musicians to join the band  
 
 ### Flow:
-1. User logs into the system
-2. User navigates to "My Bands"
-3. User selects a specific band
-4. User opens "Members" or "Manage Members" section
-5. User clicks "Invite Musician"
-6. System provides invitation options:
-   - Search for musicians (by filters)
-   - OR enter username/email (optional for MVP)
-7. User searches for musicians:
-   - by instrument
-   - genre
-   - location (optional)
-8. System displays list of matching musicians
-9. User selects a musician
-10. User clicks "Invite"
-11. (Optional) User adds a message
-12. System sends invitation to selected musician
-13. System shows confirmation (e.g., "Invitation sent")
-14. Invited musician receives notification
+1. User logs into the system  
+2. User navigates to "My Bands"  
+3. User selects a specific band  
+4. System displays band profile page  
+5. System checks if user has permission to manage members  
+6. If user does NOT have permission:
+   - System hides "Invite Musician" option  
+   - User can only view members  
+7. If user has permission:
+   - User opens "Members" or "Manage Members" section  
+   - User clicks "Invite Musician"  
+   - System provides invitation options:
+     - Search for musicians (by filters)
+     - OR enter username/email (optional for MVP)  
+8. User searches for musicians:
+   - by instrument  
+   - genre  
+   - location (optional)  
+9. System displays list of matching musicians  
+10. User selects a musician  
+11. User clicks "Invite"  
+12. (Optional) User adds a message  
+13. System sends invitation to selected musician  
+14. System creates invitation record (status: pending)  
+15. System shows confirmation (e.g., "Invitation sent")  
+16. Invited musician receives notification  
 
 ---
 
